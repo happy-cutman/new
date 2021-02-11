@@ -1,0 +1,48 @@
+.wrapper {
+  display: grid;
+  background-color: #343434;
+  min-height: 80px;
+  grid-auto-flow: column;
+  grid-gap: 20px;
+  padding-right: 30px;
+  padding-left: 30px;
+}
+
+.userContainer {
+  display: grid;
+  justify-content: end;
+  align-content: center;
+  color: #ffffff;
+  font-size: 16px;
+}
+
+.links {
+  display: grid;
+  justify-content: start;
+  align-content: center;
+  grid-auto-flow: column;
+  grid-gap: 20px;
+}
+
+.links > button {
+  background: #E44B05;
+  border-radius: 8px;
+  padding: 10px 15px 10px 15px;
+  border: none;
+  margin-right: 15px;
+}
+
+.links > button:hover {
+  background-color: #D54605;
+}
+
+a {
+  color: white;
+  text-decoration: none;
+}
+
+a:hover {
+  color: white;
+}
+
+

@@ -1,0 +1,52 @@
+.wrapper {
+  background-color: #343434;
+  height: 100%;
+}
+
+.hidden {
+  display: none;
+}
+
+.show {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+.content {
+  padding: 20px;
+}
+
+.subtitle {
+  font-size: 18px;
+  display: flex;
+  justify-content: space-between;
+  cursor: pointer;
+}
+
+.subtitle > span {
+  padding-bottom: 10px;
+}
+
+.form {
+  padding-bottom: 50px;
+}
+
+.radioContainer {
+  display: flex;
+  flex-direction: column;
+  padding-top: 10px;
+}
+
+.radioItem {
+  padding-bottom: 10px;
+}
+
+.radioItem > label{
+  font-size: 16px;
+}
+
+.radioItem > input[type='radio'] {
+  margin-right: 10px;
+}
