@@ -1,37 +1,10 @@
-.TableHead {
-  display: flex;
-  /* padding: 55px 95px 35px 95px; */
-  padding-top: 55px;
-  margin-right: 50px;
-  margin-left: 50px;
-  margin-bottom: 20px;
-  justify-content: space-around;
+.tableHead th{
+  padding:12px 15px;
+  text-align: center;
+  font-size:16px;
+}
+
+.tableHead i {
   font-size: 14px;
-  font-weight: 800;
-
-}
-
-.TableHead div {
-  text-align: left;
-  color: #A0A7B6;
-}
-
-.TableHead div:first-child{
-  width: 191.19px;
-}
-
-.TableHead div:nth-child(2){
-  width: 229.8px;
-}
-
-.TableHead div:nth-child(3){
-  width: 153.19px;
-}
-
-.TableHead div:nth-child(4){
-  width: 229.8px;
-}
-
-.TableHead div:nth-child(5){
-  width: 102px;
+  margin-left: 3px;
 }

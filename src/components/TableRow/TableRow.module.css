@@ -1,90 +1,40 @@
-.TableData {
-  display: flex;
-  justify-content: space-around;
-  background-color: rgba(217,235,205,0.5);
-  margin-bottom: 10px;
-  margin-right: 50px;
-  margin-left: 50px;
-  border-radius: 20px;
-  height: 70px;
-
-
+.tableRow {
+  background-color: #343434;
+  color: #EDEEF2;
 }
 
-.TableData div {
-
-  display: flex;
-  padding-top: 20px;
-  padding-bottom: 10px;
+.tableRow td{
+  padding:12px 15px;
+  text-align: center;
+  font-size:16px;
 }
 
-.FaCircle {
-  font-size: 12px;
-  margin-right: 10px;
-  color: #cccfca;
-}
-
-.User span a{
-  /* color: #5164ca; */
-  color: #038820;
-  font-weight: 600;
-}
-
-.User span a:hover {
-  cursor: pointer;
-  color: #3c4fb8;
-  transition: 0.3s ease;
-}
-
-
-.TableData div:first-child{
-  width: 191px;
-
-}
-
-.TableData div:nth-child(2){
-  width: 229.8px;
-}
-
-.TableData div:nth-child(3){
-  width: 153.19px;
-}
-
-.TableData div:nth-child(4){
-  width: 229.8px;
-}
-
-.TableData div:nth-child(5){
-  width: 102px;
-}
-
-.Button {
-  /* border: 4px solid lawngreen; */
-  display: flex;
-  justify-content: center;
-  align-items: center;
-
-}
-
-.Button button {
-  display: flex;
-  background-color: #ffdd47 ;
+.buyBtn {
+  background: #E44B05;
+  color: #EDEEF2;
+  border-radius: 8px;
+  padding: 4px 18px 4px 18px;
   border: none;
-  border-radius: 10px;
-  width: 102px;
-  height: 44px;
-  padding: 10px 24.5px;
-  font-family: 'Montserrat', 'Roboto';
-  color: #000;
-  font-weight: 600;
-  justify-content: center;
-  align-items: center;
 }
 
-
-.Button button:hover {
-  cursor: pointer;
-  background-color: #fbe68b;
-  color: #fff;
-  transition: 0.3s ease;
+.buyBtn:hover {
+    background-color: #D54605;
 }
+
+.chatBtn{
+  background: #616161;
+  color: #EDEEF2;
+  border-radius: 8px;
+  padding: 4px 18px 4px 18px;
+  border: none;
+  margin-right: 5px;
+}
+
+.chatBtn:hover {
+  background-color: #535353;
+}
+
+tr:first-child td:first-child { border-top-left-radius: 10px; }
+tr:first-child td:last-child { border-top-right-radius: 10px; }
+tr:last-child td:first-child { border-bottom-left-radius: 10px; }
+tr:last-child td:last-child { border-bottom-right-radius: 10px; }

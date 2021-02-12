@@ -1,14 +1,19 @@
+import React from 'react'
 import styles from "./TableHead.module.css";
+
 
 const TableHead = () => {
     return (
-        <div className={styles.TableHead}>
-            <div>Trader</div>
-            <div>Payment Method</div>
-            <div>Rate,$/BTC</div>
-            <div>Limit,$</div>
-            <div>Actions</div>
-        </div>
+        <thead className={styles.tableHead}>
+        <tr>
+            <th>Trader</th>
+            <th>Selling Asset</th>
+            <th>Exchange Asset</th>
+            <th>Rate <i className="fas fa-exchange-alt"></i></th>
+            <th>Limits</th>
+            <th>Action</th>
+        </tr>
+        </thead>
     );
 };
 

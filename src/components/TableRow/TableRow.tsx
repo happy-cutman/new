@@ -1,28 +1,32 @@
+import React from 'react';
 import {Link} from 'react-router-dom';
 
 import styles from './TableRow.module.css'
 
 
-const TableData = () => {
+// @ts-ignore
+const TableRow = ({item}) => {
+    console.log(item)
     return (
-        <div className={styles.TableData}>
-            <div className={styles.User}>
-                <span>
-					<a href="#/">User</a>
-				</span>
-            </div>
-            <div>Other payment methods</div>
-            <div>32307</div>
-            <div>15-500</div>
-            <div className={styles.Button}>
-                <Link to="/Trade">
-                    <button>
+        <tbody>
+            <tr className={styles.tableRow}>
+                <td>{item.trader}</td>
+                <td>{item.sellingAsset}</td>
+                <td>{item.exchangeAsset}</td>
+                <td>{item.rate}</td>
+                <td>{item.limits}</td>
+                <td>
+                    <button className={styles.chatBtn}>
+                        <span>Chat</span>
+                    </button>
+                    <button className={styles.buyBtn}>
                         <span>Buy</span>
                     </button>
-                </Link>
-            </div>
-        </div>
+                </td>
+
+            </tr>
+        </tbody>
     );
 };
 
-export default TableData;
+export default TableRow;
