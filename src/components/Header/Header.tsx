@@ -12,16 +12,16 @@ const Header = () => {
                     <Link to="/">AdBoard</Link>
                 </button>
                 <button>
-                    <Link to="/">MyAdverts</Link>
+                    <Link to="/my-adverts">MyAdverts</Link>
                 </button>
                 <button>
-                    <Link to="/">MyTrades</Link>
+                    <Link to="/my-trades/open">MyTrades</Link>
                 </button>
                 <button>
-                    <Link to="/MyChats">My Chats</Link>
+                    <Link to="/my-chats/about-my-ads">My Chats</Link>
                 </button>
                 <button>
-                    <Link to="/CreateAdvert">Create Advert</Link>
+                    <Link to="/create-advert">Create Advert</Link>
                 </button>
             </div>
             <span className={styles.userContainer}>

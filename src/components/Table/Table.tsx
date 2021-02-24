@@ -1,148 +1,62 @@
 import React, {useState} from 'react';
 import ReactPaginate from 'react-paginate'
+import {Route} from 'react-router'
+import styled from 'styled-components'
 
-import TableRow from '../TableRow/TableRow';
 import TableHead from '../TableHead/TableHead';
-import styles from './Table.module.css'
-
-type Data = {
-    trader: string,
-    sellingAsset: string,
-    exchangeAsset: string,
-    rate: string,
-    limits: string
-}
+import {traders, trades, chats} from '../../data/data';
+import TableRow from '../TableRow/TableRow';
+import TradesTableRow from '../TableRow/TradesTableRow';
+import ChatsTableRow from '../TableRow/ChatsTableRow';
 
 
-// перенести
-const traders: Data[] = [
-    {
-        trader: 'Nick',
-        sellingAsset: 'WBTC',
-        exchangeAsset: 'ETH',
-        rate: '42.4564 WBTC/ETH',
-        limits: '0.01.-2 WBTC'
-    },
-    {
-        trader: 'Frank',
-        sellingAsset: 'WBTC',
-        exchangeAsset: 'TOKEN A',
-        rate: '5644.1 WBTC/TOKEN A',
-        limits: '0.01.- 2 WBTC'
-    },
-    {
-        trader: 'Sara',
-        sellingAsset: 'TOKEN C',
-        exchangeAsset: 'TOKEN D',
-        rate: '312.1 TOKEN C/TOKEN D',
-        limits: '10-5000 TOKEN C'
-    },
-    {
-        trader: 'Sara',
-        sellingAsset: 'TOKEN C',
-        exchangeAsset: 'TOKEN D',
-        rate: '312.1 TOKEN C/TOKEN D',
-        limits: '10-5000 TOKEN C'
-    },
-    {
-        trader: 'Sara',
-        sellingAsset: 'TOKEN C',
-        exchangeAsset: 'TOKEN D',
-        rate: '312.1 TOKEN C/TOKEN D',
-        limits: '10-5000 TOKEN C'
-    },
-    {
-        trader: 'Sara',
-        sellingAsset: 'TOKEN C',
-        exchangeAsset: 'TOKEN D',
-        rate: '312.1 TOKEN C/TOKEN D',
-        limits: '10-5000 TOKEN C'
-    },
-    {
-        trader: 'Sara',
-        sellingAsset: 'TOKEN C',
-        exchangeAsset: 'TOKEN D',
-        rate: '312.1 TOKEN C/TOKEN D',
-        limits: '10-5000 TOKEN C'
-    },
-    {
-        trader: 'Sara',
-        sellingAsset: 'TOKEN C',
-        exchangeAsset: 'TOKEN D',
-        rate: '312.1 TOKEN C/TOKEN D',
-        limits: '10-5000 TOKEN C'
-    },
-    {
-        trader: 'Sara',
-        sellingAsset: 'TOKEN C',
-        exchangeAsset: 'TOKEN D',
-        rate: '312.1 TOKEN C/TOKEN D',
-        limits: '10-5000 TOKEN C'
-    },
-    {
-        trader: 'Sara',
-        sellingAsset: 'TOKEN C',
-        exchangeAsset: 'TOKEN D',
-        rate: '312.1 TOKEN C/TOKEN D',
-        limits: '10-5000 TOKEN C'
-    },
-    {
-        trader: 'Sara',
-        sellingAsset: 'TOKEN C',
-        exchangeAsset: 'TOKEN D',
-        rate: '312.1 TOKEN C/TOKEN D',
-        limits: '10-5000 TOKEN C'
-    },
-    {
-        trader: 'Sara',
-        sellingAsset: 'TOKEN C',
-        exchangeAsset: 'TOKEN D',
-        rate: '312.1 TOKEN C/TOKEN D',
-        limits: '10-5000 TOKEN C'
-    },
-    {
-        trader: 'Sara',
-        sellingAsset: 'TOKEN C',
-        exchangeAsset: 'TOKEN D',
-        rate: '312.1 TOKEN C/TOKEN D',
-        limits: '10-5000 TOKEN C'
-    },
-    {
-        trader: 'Sara',
-        sellingAsset: 'TOKEN C',
-        exchangeAsset: 'TOKEN D',
-        rate: '312.1 TOKEN C/TOKEN D',
-        limits: '10-5000 TOKEN C'
-    },
-    {
-        trader: 'Sara',
-        sellingAsset: 'TOKEN C',
-        exchangeAsset: 'TOKEN D',
-        rate: '312.1 TOKEN C/TOKEN D',
-        limits: '10-5000 TOKEN C'
-    },
-    {
-        trader: 'Sara',
-        sellingAsset: 'TOKEN C',
-        exchangeAsset: 'TOKEN D',
-        rate: '312.1 TOKEN C/TOKEN D',
-        limits: '10-5000 TOKEN C'
-    },
-    {
-        trader: 'Sara',
-        sellingAsset: 'TOKEN C',
-        exchangeAsset: 'TOKEN D',
-        rate: '312.1 TOKEN C/TOKEN D',
-        limits: '10-5000 TOKEN C'
-    },
-    {
-        trader: 'Sara',
-        sellingAsset: 'TOKEN C',
-        exchangeAsset: 'TOKEN D',
-        rate: '312.1 TOKEN C/TOKEN D',
-        limits: '10-5000 TOKEN C'
-    },
-];
+// styles
+const Wrapper = styled.div`
+  display: grid;
+  justify-items: center;
+  color: white;
+`;
+
+const StyledTable = styled.table`
+  width: 90%;
+  margin-top: 20px;
+  margin-bottom: 0;
+  border-collapse: separate;
+  border-spacing: 0 1em;
+  //table-layout: fixed;
+`;
+
+const StyledPaginateContainer = styled.div`
+  ul {
+    margin: 0 auto;
+    padding: 0;
+  }
+  .pagination {
+    margin-top: 20px;
+    display: flex;
+    height: 40px;
+    list-style: none;
+    justify-content: flex-end;
+    width: 90%;
+  }
+  .pagination a {
+      padding: 5px 10px 5px 10px;
+      margin: 8px;
+      border-radius: 5px;
+      cursor: pointer;
+      border: 1px solid #E44B05;
+  }
+  .pagination a:hover {
+        background-color: #D54605;
+  }
+  .pagination a:focus {
+        outline: none;
+  }
+  .paginationActive a {
+        background-color: #D54605;
+  }
+`;
+//---------------------------------------
 
 
 const Table = () => {
@@ -159,33 +73,53 @@ const Table = () => {
             )
         });
 
+    const displayDeals = trades.slice(pagesVisited, pagesVisited + usersPerPage)
+        .map((item, index) => {
+            return (
+                <TradesTableRow key={index} item={item}/>
+            )
+        });
+
+    const displayChats = chats.slice(pagesVisited, pagesVisited + usersPerPage)
+        .map((item, index) => {
+            return (
+                <ChatsTableRow key={index} item={item}/>
+            )
+        });
+
     // вычисляет кол-во страниц
     const pageCount = Math.ceil(traders.length / usersPerPage);
+
     // @ts-ignore
     const changePage = ({selected}) => {
         setPageNumber(selected)
     };
 
     return (
-        <div>
-            <div className={styles.wrapper}>
-                <table className={styles.table}>
+        <>
+            <Wrapper>
+                <StyledTable>
                     <TableHead/>
-                    {displayUsers}
-                </table>
+                    <Route path={['/', '/my-adverts']} render={() => displayUsers} exact/>
+                    <Route path={['/my-trades/open', '/my-trades/closed']} render={() => displayDeals} exact/>
+                    <Route path={['/my-chats/about-my-ads', '/my-trades/about-other-ads']} render={() => displayChats} exact/>
+                </StyledTable>
+            </Wrapper>
+            <StyledPaginateContainer>
                 <ReactPaginate pageCount={pageCount}
-                              previousLabel={'Prev'}
-                              nextLabel={'Next'}
-                              onPageChange={changePage}
-                              containerClassName={styles.pagination}
-                              previousLinkClassName={'prevBtn'}
-                              nextLinkClassName={'nextBtn'}
-                              disabledClassName={'disabledBtn'}
-                              activeClassName={styles.paginationActive}
-                              pageRangeDisplayed={3}
-                              marginPagesDisplayed={1}/>
-            </div>
-        </div>
+                               previousLabel={'Prev'}
+                               nextLabel={'Next'}
+                               onPageChange={changePage}
+                               containerClassName='pagination'
+                               previousLinkClassName={'prevBtn'}
+                               nextLinkClassName={'nextBtn'}
+                               disabledClassName={'disabledBtn'}
+                               activeClassName='paginationActive'
+                               pageRangeDisplayed={3}
+                               marginPagesDisplayed={1}
+                />
+            </StyledPaginateContainer>
+        </>
     );
 };
 

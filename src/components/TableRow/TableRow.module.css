@@ -9,30 +9,12 @@
   font-size:16px;
 }
 
-.buyBtn {
-  background: #E44B05;
-  color: #EDEEF2;
-  border-radius: 8px;
-  padding: 4px 18px 4px 18px;
-  border: none;
+th, td {
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
 }
 
-.buyBtn:hover {
-    background-color: #D54605;
-}
-
-.chatBtn{
-  background: #616161;
-  color: #EDEEF2;
-  border-radius: 8px;
-  padding: 4px 18px 4px 18px;
-  border: none;
-  margin-right: 5px;
-}
-
-.chatBtn:hover {
-  background-color: #535353;
-}
 
 tr:first-child td:first-child { border-top-left-radius: 10px; }
 tr:first-child td:last-child { border-top-right-radius: 10px; }
