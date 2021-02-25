@@ -11,19 +11,14 @@ import ChatsTableRow from '../TableRow/ChatsTableRow';
 
 
 // styles
-const Wrapper = styled.div`
-  display: grid;
-  justify-items: center;
-  color: white;
-`;
-
 const StyledTable = styled.table`
   width: 90%;
-  margin-top: 20px;
-  margin-bottom: 0;
+  margin: 20px auto 0 auto;
   border-collapse: separate;
   border-spacing: 0 1em;
+  padding: 0;
   //table-layout: fixed;
+  
 `;
 
 const StyledPaginateContainer = styled.div`
@@ -96,15 +91,13 @@ const Table = () => {
     };
 
     return (
-        <>
-            <Wrapper>
-                <StyledTable>
-                    <TableHead/>
-                    <Route path={['/', '/my-adverts']} render={() => displayUsers} exact/>
-                    <Route path={['/my-trades/open', '/my-trades/closed']} render={() => displayDeals} exact/>
-                    <Route path={['/my-chats/about-my-ads', '/my-trades/about-other-ads']} render={() => displayChats} exact/>
-                </StyledTable>
-            </Wrapper>
+        <div>
+            <StyledTable>
+                <TableHead/>
+                <Route path={['/', '/my-adverts']} render={() => displayUsers} exact/>
+                <Route path={['/my-trades/open', '/my-trades/closed']} render={() => displayDeals} exact/>
+                <Route path={['/my-chats/about-my-ads', '/my-trades/about-other-ads']} render={() => displayChats} exact/>
+            </StyledTable>
             <StyledPaginateContainer>
                 <ReactPaginate pageCount={pageCount}
                                previousLabel={'Prev'}
@@ -119,7 +112,7 @@ const Table = () => {
                                marginPagesDisplayed={1}
                 />
             </StyledPaginateContainer>
-        </>
+        </div>
     );
 };
 

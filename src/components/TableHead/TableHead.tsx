@@ -3,17 +3,19 @@ import {Route} from 'react-router';
 import styled from 'styled-components';
 
 const StyledTableHead = styled.thead`
-      th {
-      padding:12px 15px;
-      text-align: center;
-      font-size:16px;
-      white-space: nowrap;
-    }
-    
-     i {
-      font-size: 14px;
-      margin-left: 3px;
-    }
+  color: white;
+
+  th {
+    padding:12px 15px;
+    text-align: center;
+    font-size:16px;
+    white-space: nowrap;
+  }
+
+  i {
+    font-size: 14px;
+    margin-left: 3px;
+  }
 `;
 
 
@@ -50,13 +52,13 @@ const TableHead = () => {
                 </>
             } exact/>
             <Route path={['/my-chats/about-my-ads', '/my-chats/about-other-ads']} render={() =>
-                <tr>
+                <>
                     <th>Your counterparty</th>
                     <th>Advert</th>
                     <th>Last message preview</th>
                     <th>Last date</th>
                     <th>Actions</th>
-                </tr>
+                </>
             } exact/>
         </StyledTableHead>
     );
