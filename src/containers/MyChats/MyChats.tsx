@@ -28,6 +28,7 @@ const StyledLink = styled(NavLink)`
   text-decoration: none;
   margin-right: 20px;
   font-size: 18px;
+  color: white;
 
   &.active {
     text-decoration: underline;
@@ -52,7 +53,7 @@ const MyChats = () => {
                     <StyledLink to={'/my-chats/about-my-ads'}>
                         About my ads
                     </StyledLink>
-                    <StyledLink to={'/my-trades/about-other-ads'}>
+                    <StyledLink to={'/my-chats/about-other-ads'}>
                         About other ads
                     </StyledLink>
                 </div>

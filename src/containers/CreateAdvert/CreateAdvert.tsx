@@ -6,8 +6,8 @@ import EditAdvert from '../../components/EditAdvert/EditAdvert';
 const CreateAdvert = () => {
     return (
         <>
-            {/*<NewAdvert/>*/}
-            <EditAdvert/>
+            <NewAdvert/>
+            {/*<EditAdvert/>*/}
         </>
     );
 };

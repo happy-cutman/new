@@ -1,7 +1,7 @@
 import React from 'react';
 import styled from 'styled-components'
 import Table from '../../components/Table/Table';
-import {PrimaryBtn} from '../../components/Buttons/Buttons';
+import {PrimaryBtn} from '../../GlobalStyles/styles';
 
 
 const SubTitleContainer = styled.div`

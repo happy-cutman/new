@@ -9,6 +9,7 @@ import CreateAdvert from './containers/CreateAdvert/CreateAdvert';
 import MyTrades from './containers/MyTrades/MyTrades';
 import NewTrade from './components/NewTrade/NewTrade';
 import MyChats from './containers/MyChats/MyChats';
+import Chat from './components/Chat/Chat';
 
 
 function App() {
@@ -17,13 +18,16 @@ function App() {
             <BrowserRouter>
                 <Header/>
                 <Switch>
-                    <Route path='/' component={Board} exact/>
+                    <Route path='/adboard' component={Board} exact/>
                     <Route path='/my-adverts' component={MyAdverts} exact/>
                     <Route path='/create-advert' component={CreateAdvert} exact/>
                     <Route path='/my-trades/open' component={MyTrades} exact/>
                     <Route path='/my-trades/closed' component={MyTrades} exact/>
                     <Route path='/my-trades/new-trade' component={NewTrade} exact/>
                     <Route path='/my-chats/about-my-ads' component={MyChats} exact/>
+                    <Route path='/my-chats/about-other-ads' component={MyChats} exact/>
+                    {/*/временная ссылка/*/}
+                    <Route path='/my-chats/chat' component={Chat} exact/>
                 </Switch>
             </BrowserRouter>
         </div>

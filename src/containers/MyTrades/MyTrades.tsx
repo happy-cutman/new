@@ -1,7 +1,7 @@
 import React from 'react';
 import {Link, NavLink} from 'react-router-dom';
 import styled from 'styled-components';
-import {PrimaryBtn} from '../../components/Buttons/Buttons';
+import {PrimaryBtn} from '../../GlobalStyles/styles';
 import Table from '../../components/Table/Table';
 
 
@@ -23,12 +23,18 @@ const LinksContainer = styled.div`
   justify-content: space-between;
   width: 90%;
   margin: 25px auto 0 auto;
+  
+  a {
+    color: white;
+    text-decoration:none;
+  }
 `;
 
 const StyledLink = styled(NavLink)`
   text-decoration: none;
   margin-right: 20px;
   font-size: 18px;
+  color: white;
 
   &.active {
     text-decoration: underline;

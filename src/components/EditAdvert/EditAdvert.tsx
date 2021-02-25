@@ -1,6 +1,6 @@
 import React from 'react';
 import styled from 'styled-components';
-import {SecondaryBtn, PrimaryBtn} from '../Buttons/Buttons';
+import {SecondaryBtn, PrimaryBtn} from '../../GlobalStyles/styles';
 
 
 const FormContainer = styled.div`
@@ -21,14 +21,16 @@ const SubTitle = styled.span`
 const Form = styled.form`
   margin-top: 20px;
   max-width: 768px;
-  //background-color: #2f2f2f;
-  //width: 68%;
+  background-color: #2f2f2f;
+  border-radius: 5px;
+  padding: 20px 0 20px 20px;
+  box-shadow: 0 15px 15px -5px rgba(0, 0, 0, 0.2);
 `;
 
 const FormRow = styled.div`
   display: grid;
   align-items:center;
-  grid-template-columns: 200px 350px 200px;
+  grid-template-columns: 200px 380px 200px;
   grid-gap: 10px;
 `;
 
@@ -46,8 +48,8 @@ const FormButtons = styled.div`
   margin-top: 30px;
   display: grid;
   align-items:center;
-  grid-template-columns: 300px 150px 150px;
-  grid-gap: 40px;
+  grid-template-columns: 145px 150px 150px;
+  grid-gap: 70px;
 `;
 
 const Input = styled.input`

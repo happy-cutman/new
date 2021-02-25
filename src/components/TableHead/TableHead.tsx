@@ -22,7 +22,7 @@ const StyledTableHead = styled.thead`
 const TableHead = () => {
     return (
         <StyledTableHead>
-            <Route path={['/', '/my-adverts']} render={() =>
+            <Route path={['/adboard', '/my-adverts']} render={() =>
                 <>
                     <tr>
                         <th>Trader</th>
@@ -52,13 +52,13 @@ const TableHead = () => {
                 </>
             } exact/>
             <Route path={['/my-chats/about-my-ads', '/my-chats/about-other-ads']} render={() =>
-                <>
+                <tr>
                     <th>Your counterparty</th>
                     <th>Advert</th>
                     <th>Last message preview</th>
                     <th>Last date</th>
                     <th>Actions</th>
-                </>
+                </tr>
             } exact/>
         </StyledTableHead>
     );

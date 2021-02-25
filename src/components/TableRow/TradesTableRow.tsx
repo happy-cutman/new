@@ -1,8 +1,6 @@
 import React from 'react';
-import {Link, Route} from 'react-router-dom';
-
-import styles from './TableRow.module.css'
-import {PrimaryBtn, SecondaryBtn} from '../Buttons/Buttons';
+import {Route} from 'react-router-dom';
+import {PrimaryBtn, SecondaryBtn, StyledTableRow} from '../../GlobalStyles/styles';
 import styled from 'styled-components';
 
 
@@ -26,7 +24,7 @@ const TradesTableRow = ({item}) => {
     return (
         <tbody>
         {/*рендерит TableRow для MyTrades*/}
-            <tr className={styles.tableRow}>
+            <StyledTableRow>
                 <td>{item.contract}</td>
                 <td>{item.yourCounterparty}</td>
                 <td>{item.youSend}</td>
@@ -57,7 +55,7 @@ const TradesTableRow = ({item}) => {
                         </>
                     } exact/>
                 </td>
-            </tr>
+            </StyledTableRow>
         </tbody>
     );
 };

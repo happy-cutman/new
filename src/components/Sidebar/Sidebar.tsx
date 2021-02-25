@@ -1,5 +1,123 @@
 import React, {useState} from 'react';
-import styles from './Sidebar.module.css'
+import styled from 'styled-components';
+
+const SideBarWrapper = styled.div`
+  background-color: #2f2f2f;
+  height: 100vh;
+`;
+
+const SideBarContent = styled.div`
+  padding: 12px 20px 20px 20px;
+  
+  h1 {
+    padding-bottom: 20px;
+    color: white;
+  }
+`;
+
+const Subtitle = styled.div`
+  font-size: 18px;
+  display: flex;
+  justify-content: space-between;
+  align-items: baseline;
+  cursor: pointer;
+  color: #bbbbbb;
+  
+  span {
+    padding-bottom: 10px;
+  }
+`;
+
+const Form = styled.form`
+  padding-bottom: 50px;
+`;
+
+const SearchContainer = styled.div`
+  position:relative;
+  padding:0;
+  margin:0;
+  color: #bbbbbb;
+  
+  i {
+    position:absolute;
+    bottom:8px;
+    right:5px;
+    width:10px;
+    height:15px
+  }
+  
+  .search-button {
+    position:absolute;
+    bottom:8px;
+    right:0;
+    width:10px;
+    height:15px;
+    visibility: hidden;
+  }
+`;
+
+const Search = styled.input`
+  background-color: #282828;
+  border-radius: 5px;
+  border: none;
+  outline: none;
+  width: 100%;
+  height: 30px;
+  margin:0;
+  padding-left: 8px;
+  color: #bbbbbb;
+  
+  &:focus {
+     box-shadow: 0 0 1pt 1pt #bbbbbb;
+  }
+`;
+
+const RadioContainer = styled.div`
+  display: flex;
+  flex-direction: column;
+  padding-top: 10px;
+  position: relative;
+  
+  input[type='radio']:after {
+    width: 10px;
+    height: 10px;
+    border-radius: 15px;
+    position: relative;
+    background-color: #282828;
+    content: '';
+    display: inline-block;
+    visibility: visible;
+    border: 2px solid #D54605;
+  }
+
+  input[type='radio']:checked:after {
+    width: 10px;
+    height: 10px;
+    border-radius: 15px;
+    position: relative;
+    background-color: #E44B05;
+    content: '';
+    display: inline-block;
+    visibility: visible;
+    border: 2px solid #D54605;
+  }
+`;
+
+const RadioItem = styled.div`
+  padding-bottom: 10px;
+  display: flex;
+  align-items: baseline;
+  
+  label {
+    font-size: 18px;
+    color: #bbbbbb;
+  }
+  
+  input[type='radio'] {
+    margin-right: 10px;
+    cursor: pointer;
+  }
+`;
 
 
 const Sidebar = () => {
@@ -31,79 +149,77 @@ const Sidebar = () => {
     };
 
     return (
-        <div className={styles.wrapper}>
-            <div className={styles.content}>
+        <SideBarWrapper>
+            <SideBarContent>
                 <h1>Filter</h1>
-                <div className={styles.subtitle} onClick={() => toggleShow('sellingDrop')}>
+                <Subtitle onClick={() => toggleShow('sellingDrop')}>
                     <span>Selling Asset</span>
                     <i className="fas fa-chevron-down"></i>
-                </div>
+                </Subtitle>
 
-                <form id='sellingDrop' style={{display: 'block'}} className={styles.form} onSubmit={handleSubmit}>
+                <Form id='sellingDrop' style={{display: 'block'}} onSubmit={handleSubmit}>
 
-                    <div className={styles.searchContainer}>
-                        <button type='submit' className={styles.searchButton}></button>
+                    <SearchContainer>
+                        <button type='submit' className='search-button'></button>
                         <i className="fas fa-search"></i>
-                        <input type='text' className={styles.search}/>
-                    </div>
+                        <Search type='text'/>
+                    </SearchContainer>
 
-                    <div className={styles.radioContainer}>
-                        <div className={styles.radioItem}>
+                    <RadioContainer>
+                        <RadioItem>
                             <input type='radio' checked={selling === 'ETC'} value='ETC' onChange={setSellingRadio}/>
-                            <span className={styles.checkmark}></span>
                             <label>ETC</label>
-                        </div>
-                        <div className={styles.radioItem}>
+                        </RadioItem>
+                        <RadioItem>
                             <input type='radio' checked={selling === 'WBTC'} value='WBTC' onChange={setSellingRadio}/>
                             <label>WBTC</label>
-                        </div>
-                        <div className={styles.radioItem}>
+                        </RadioItem>
+                        <RadioItem>
                             <input type='radio' checked={selling === 'DAI'} value='DAI' onChange={setSellingRadio}/>
                             <label>DAI</label>
-                        </div>
-                        <div className={styles.radioItem}>
+                        </RadioItem>
+                        <RadioItem>
                             <input type='radio' checked={selling === 'LINK'} value='LINK' onChange={setSellingRadio}/>
                             <label>LINK</label>
-                        </div>
-                    </div>
+                        </RadioItem>
+                    </RadioContainer>
 
-                </form>
+                </Form>
 
-                <div className={styles.subtitle} onClick={() => toggleShow('exchangeDrop')}>
+                <Subtitle onClick={() => toggleShow('exchangeDrop')}>
                     <span>Exchange Asset</span>
-                    {/*<img style={{width: 20, height: 20}} src={arrow} alt=''/>*/}
                     <i className="fas fa-chevron-down"></i>
-                </div>
+                </Subtitle>
 
-                <form id='exchangeDrop' style={{display: 'block'}} className={styles.form} onSubmit={handleSubmit}>
+                <Form id='exchangeDrop' style={{display: 'block'}} onSubmit={handleSubmit}>
 
-                    <div className={styles.searchContainer}>
-                        <button type='submit' className={styles.searchButton}></button>
+                    <SearchContainer>
+                        <button type='submit' className='search-button'></button>
                         <i className="fas fa-search"></i>
-                        <input type='text' className={styles.search}/>
-                    </div>
+                        <Search type='text'/>
+                    </SearchContainer>
 
-                    <div className={styles.radioContainer}>
-                        <div className={styles.radioItem}>
+                    <RadioContainer>
+                        <RadioItem>
                             <input type='radio' checked={exchange === 'ETC'} value='ETC' onChange={setExchangeRadio}/>
                             <label>ETC</label>
-                        </div>
-                        <div className={styles.radioItem}>
+                        </RadioItem>
+                        <RadioItem>
                             <input type='radio' checked={exchange === 'WBTC'} value='WBTC' onChange={setExchangeRadio}/>
                             <label>WBTC</label>
-                        </div>
-                        <div className={styles.radioItem}>
+                        </RadioItem>
+                        <RadioItem >
                             <input type='radio' checked={exchange === 'DAI'} value='DAI' onChange={setExchangeRadio}/>
                             <label>DAI</label>
-                        </div>
-                        <div className={styles.radioItem}>
+                        </RadioItem>
+                        <RadioItem >
                             <input type='radio' checked={exchange === 'LINK'} value='LINK' onChange={setExchangeRadio}/>
                             <label>LINK</label>
-                        </div>
-                    </div>
-                </form>
-            </div>
-        </div>
+                        </RadioItem>
+                    </RadioContainer>
+                </Form>
+            </SideBarContent>
+        </SideBarWrapper>
     );
 };
 

@@ -1,57 +1,14 @@
 import React, {useState} from 'react';
 import ReactPaginate from 'react-paginate'
 import {Route} from 'react-router'
-import styled from 'styled-components'
 
 import TableHead from '../TableHead/TableHead';
 import {traders, trades, chats} from '../../data/data';
 import TableRow from '../TableRow/TableRow';
 import TradesTableRow from '../TableRow/TradesTableRow';
 import ChatsTableRow from '../TableRow/ChatsTableRow';
+import {PaginateContainer, StyledTable} from '../../GlobalStyles/styles';
 
-
-// styles
-const StyledTable = styled.table`
-  width: 90%;
-  margin: 20px auto 0 auto;
-  border-collapse: separate;
-  border-spacing: 0 1em;
-  padding: 0;
-  //table-layout: fixed;
-  
-`;
-
-const StyledPaginateContainer = styled.div`
-  ul {
-    margin: 0 auto;
-    padding: 0;
-  }
-  .pagination {
-    margin-top: 20px;
-    display: flex;
-    height: 40px;
-    list-style: none;
-    justify-content: flex-end;
-    width: 90%;
-  }
-  .pagination a {
-      padding: 5px 10px 5px 10px;
-      margin: 8px;
-      border-radius: 5px;
-      cursor: pointer;
-      border: 1px solid #E44B05;
-  }
-  .pagination a:hover {
-        background-color: #D54605;
-  }
-  .pagination a:focus {
-        outline: none;
-  }
-  .paginationActive a {
-        background-color: #D54605;
-  }
-`;
-//---------------------------------------
 
 
 const Table = () => {
@@ -94,11 +51,11 @@ const Table = () => {
         <div>
             <StyledTable>
                 <TableHead/>
-                <Route path={['/', '/my-adverts']} render={() => displayUsers} exact/>
+                <Route path={['/adboard', '/my-adverts']} render={() => displayUsers} exact/>
                 <Route path={['/my-trades/open', '/my-trades/closed']} render={() => displayDeals} exact/>
-                <Route path={['/my-chats/about-my-ads', '/my-trades/about-other-ads']} render={() => displayChats} exact/>
+                <Route path={['/my-chats/about-my-ads', '/my-chats/about-other-ads']} render={() => displayChats} exact/>
             </StyledTable>
-            <StyledPaginateContainer>
+            <PaginateContainer>
                 <ReactPaginate pageCount={pageCount}
                                previousLabel={'Prev'}
                                nextLabel={'Next'}
@@ -111,7 +68,7 @@ const Table = () => {
                                pageRangeDisplayed={3}
                                marginPagesDisplayed={1}
                 />
-            </StyledPaginateContainer>
+            </PaginateContainer>
         </div>
     );
 };
